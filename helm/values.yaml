@@ -2,4 +2,4 @@ nginx:
   replicaCount: 2
 
 php_fpm:
-  image: chynkm/php-fpm-hello-world:0.1
+  image: chynkm/php-fpm-hello-world:0.2
