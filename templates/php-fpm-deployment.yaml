@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: php-fpm
-  namespace: my-ns
+  namespace: myns
   # metadata.labels sets the labels that apply to the deployment.
 spec:
   replicas: 2

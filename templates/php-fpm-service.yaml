@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: php-fpm
-  namespace: my-ns
+  namespace: myns
   # metadata.labels sets the labels that apply to the service.
   labels: 
     tier: php-fpm
