@@ -1,5 +1,5 @@
 nginx:
-  replicaCount: 2
+  replicaCount: 1
 
 php_fpm:
-  image: chynkm/php-fpm-hello-world:0.2
+  image: chynkm/php-fpm-hello-world:0.1
