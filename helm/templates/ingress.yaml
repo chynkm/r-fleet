@@ -1,14 +1,14 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: nginx-ingress
+  name: apps-ingress
+  annotations:
+    alb.ingress.kubernetes.io/load-balancer-name: apps-ingress
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/healthcheck-path: /healthz
 spec:
-  ingressClassName: nginx
-  defaultBackend:
-    service:
-      name: error
-      port:
-        name: svc-port
+  ingressClassName: alb
   rules:
     - http:
         paths:

@@ -1,4 +1,4 @@
-defaultNamespace: fleet-helm-example
+defaultNamespace: fleet-helm
 
 # Custom helm options
 helm:
