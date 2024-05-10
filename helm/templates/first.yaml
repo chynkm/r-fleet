@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: first
-  namespace: apps
   labels:
     app.kubernetes.io/name: first
 spec:
@@ -35,7 +34,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: first
-  namespace: apps
+  namespace: fleet-helm-example
   labels:
     app.kubernetes.io/name: first
 spec:
