@@ -1,29 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: first
+  name: third
   namespace: apps
   labels:
-    app.kubernetes.io/name: first
+    app.kubernetes.io/name: third
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: first
-  replicas: 2
+      app.kubernetes.io/name: third
+  replicas: 4
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: first
-        app: first
+        app.kubernetes.io/name: third
     spec:
       terminationGracePeriodSeconds: 0
       containers:
-        - name: first
+        - name: third
           image: hashicorp/http-echo
           imagePullPolicy: IfNotPresent
           args:
             - -listen=:3000
-            - -text=first
+            - -text=third
           ports:
             - name: app-port
               containerPort: 3000
@@ -31,28 +30,22 @@ spec:
             requests:
               cpu: 0.125
               memory: 50Mi
-      affinity:
-         podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - first
-            topologyKey: "kubernetes.io/hostname"
+      tolerations:
+        - key: role
+          operator: Exists
+          effect: NoSchedule
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: first
+  name: third
   namespace: apps
   labels:
-    app.kubernetes.io/name: first
+    app.kubernetes.io/name: third
 spec:
   type: ClusterIP
   selector:
-    app.kubernetes.io/name: first
+    app.kubernetes.io/name: third
   ports:
     - name: svc-port
       port: 80
