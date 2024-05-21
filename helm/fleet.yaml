@@ -3,7 +3,7 @@ targetCustomizations:
 - name: dev
   helm:
     valuesFiles:
-      - values.yaml
+      - values-dev.yaml
   clusterSelector:
     matchLabels:
       env: dev
