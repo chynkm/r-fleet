@@ -14,4 +14,4 @@ targetCustomizations:
       - values-prod.yaml
   clusterSelector:
     matchLabels:
-      env: prod
+      env: production
