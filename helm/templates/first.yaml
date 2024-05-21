@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: first
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       labels:

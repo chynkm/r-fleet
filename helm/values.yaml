@@ -1,5 +1,1 @@
-nginx:
-  replicaCount: 1
-
-php_fpm:
-  image: chynkm/php-fpm-hello-world:0.1
+replicaCount: 1
