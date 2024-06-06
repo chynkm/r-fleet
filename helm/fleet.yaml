@@ -1,4 +1,4 @@
-namespace: my-apps
+defaultNamespace: my-apps
 targetCustomizations:
 - name: dev
   helm:
