@@ -1,1 +1,4 @@
 replicaCount: 1
+namespace: my-apps-dev
+domainName: km.test
+domainNameSecretTLS: km-test-ssl-certificate

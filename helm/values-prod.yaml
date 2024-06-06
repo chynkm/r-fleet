@@ -1,1 +1,4 @@
 replicaCount: 5
+namespace: my-apps-prod
+domainName: rm.test
+domainNameSecretTLS: rm-test-ssl-certificate

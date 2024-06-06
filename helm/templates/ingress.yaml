@@ -1,32 +1,34 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: apps-ingress
-#   annotations:
-#     alb.ingress.kubernetes.io/scheme: internet-facing
-#     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
-#     alb.ingress.kubernetes.io/target-type: ip
-# spec:
-#   ingressClassName: alb
-#   defaultBackend:
-#     service:
-#       name: error
-#       port:
-#         name: svc-port
-#   rules:
-#     - http:
-#         paths:
-#           - path: /first
-#             pathType: Prefix
-#             backend:
-#               service:
-#                 name: first
-#                 port:
-#                   name: svc-port
-#           - path: /second
-#             pathType: Prefix
-#             backend:
-#               service:
-#                 name: second
-#                 port:
-#                   name: svc-port
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-nginx
+  namespace: {{ .Values.namespace }}
+spec:
+  ingressClassName: external-nginx
+  defaultBackend:
+    service:
+      name: first
+      port:
+        number: 80
+  rules:
+    - host: {{ .Values.domainName }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: first
+                port:
+                  number: 80
+          - path: /second
+            pathType: Prefix
+            backend:
+              service:
+                name: second
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - {{ .Values.domainName }}
+      secretName: {{ .Values.domainNameSecretTLS }}
