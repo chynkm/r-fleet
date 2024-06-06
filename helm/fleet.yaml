@@ -6,7 +6,7 @@ targetCustomizations:
       - values-dev.yaml
   clusterSelector:
     matchLabels:
-      env: dev
+      env-dev: dev
 
 - name: prod
   helm:
