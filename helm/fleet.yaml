@@ -1,4 +1,4 @@
-defaultNamespace: my-apps
+defaultNamespace: my-apps-dev
 targetCustomizations:
 - name: dev
   helm:
@@ -8,10 +8,11 @@ targetCustomizations:
     matchLabels:
       env: dev
 
+defaultNamespace: my-apps-prod
 - name: prod
   helm:
     valuesFiles:
       - values-prod.yaml
   clusterSelector:
     matchLabels:
-      env: production
+      env: dev
