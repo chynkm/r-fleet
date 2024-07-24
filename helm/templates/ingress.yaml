@@ -4,7 +4,6 @@ metadata:
   name: ingress-nginx
   namespace: {{ .Values.namespace }}
 spec:
-  ingressClassName: external-nginx
   defaultBackend:
     service:
       name: first
@@ -13,7 +12,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /
+          - path: /first
             pathType: Prefix
             backend:
               service:
