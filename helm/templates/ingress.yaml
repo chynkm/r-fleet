@@ -11,8 +11,7 @@ spec:
       port:
         number: 80
   rules:
-    - host: {{ .Values.domainName }}
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
@@ -28,7 +27,3 @@ spec:
                 name: second
                 port:
                   number: 80
-  tls:
-    - hosts:
-        - {{ .Values.domainName }}
-      secretName: {{ .Values.domainNameSecretTLS }}
