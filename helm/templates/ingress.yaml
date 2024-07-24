@@ -4,6 +4,7 @@ metadata:
   name: ingress-nginx
   namespace: {{ .Values.namespace }}
 spec:
+  ingressClassName: public
   defaultBackend:
     service:
       name: first
